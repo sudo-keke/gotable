@@ -25,7 +25,7 @@ var StructName = "City"
 // SavePackage 文件最上面一行的包名称：package xxx
 var SavePackage = "model"
 
-// SavePath 存在哪个包下，此处加不加[.go]后缀都可以
+// SavePath 存在哪个包下，此处加不加[.go]后缀、包名后加不加[/] 都可以
 var SavePath = "./" + SavePackage
 
 func main() {
@@ -33,6 +33,7 @@ func main() {
 	Single()
 }
 
+// Single 单表生成
 func Single() {
 	handler := config.NewTblToStructHandler()
 	handler.
@@ -59,6 +60,8 @@ func Single() {
 	config.GenerateTblStruct(handler)
 
 }
+
+// Multiple 多表生成
 func Multiple() {
 	handler := config.NewTblToStructHandler()
 	handler.
