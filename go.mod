@@ -1,4 +1,4 @@
-module gotable
+module github.com/sudo-keke/gotable
 
 go 1.17
 
@@ -12,3 +12,4 @@ require (
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.4 // indirect
 )
+

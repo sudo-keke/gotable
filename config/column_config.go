@@ -2,7 +2,7 @@ package config
 
 import (
 	"fmt"
-	"gotable/common"
+	"github.com/sudo-keke/gotable/common"
 	"os"
 	"strings"
 )

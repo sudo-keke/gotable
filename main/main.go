@@ -1,8 +1,8 @@
 package main
 
 import (
-	"gotable/common"
-	"gotable/config"
+	"github.com/sudo-keke/gotable/common"
+	"github.com/sudo-keke/gotable/config"
 )
 
 const (
