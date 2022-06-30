@@ -1,4 +1,4 @@
-module github.com/sudo-keke/gotable
+module gotable
 
 go 1.17
 
