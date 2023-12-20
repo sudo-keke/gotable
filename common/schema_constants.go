@@ -90,8 +90,9 @@ var SqlTypeToGoType = map[string]string{
 }
 
 const (
-	CamelCase  = "CamelCase"   // CamelCase 驼峰
-	FirstUpper = "First_upper" // FirstUpper 首字母大写
+	CamelCase         = "CamelCase"         // CamelCase 驼峰
+	FirstUpper        = "First_upper"       // FirstUpper 首字母大写
+	LowAfterCamelCase = "LowAfterCamelCase" // LowAfterCamelCase 先全部转小写，然后首字母大写
 
 	ORM  = "orm"
 	GORM = "gorm"

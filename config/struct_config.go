@@ -11,8 +11,8 @@ type StructName struct {
 // --------------------------------------------------- 结构体配置 --------------------------------------------------------
 
 // SetManyStructNameConfig 结构名称配置，多表生成时使用
-//	SetManyStructNameConfig("命名规则","前缀","后缀")
-//	不设置此项，默认生成的结构名类型为CamelCase写法，无前后缀
+// SetManyStructNameConfig("命名规则","前缀","后缀")
+// 不设置此项，默认生成的结构名类型为CamelCase写法，无前后缀
 func (ts *StructHandler) SetManyStructNameConfig(nameCaseType, prefix, suffix string) *StructHandler {
 	ts.StructName.NameCaseType = nameCaseType
 	ts.StructName.Prefix = prefix
@@ -21,10 +21,10 @@ func (ts *StructHandler) SetManyStructNameConfig(nameCaseType, prefix, suffix st
 }
 
 // SetStructNameConfig 结构名称配置，已简化，无前后缀,单表生成时使用
-//	SetStructNameConfig("结构名称","命名规则")
-//	不设置此项，默认生成的结构名类型为CamelCase写法
-func (ts *StructHandler) SetStructNameConfig(name, nameCaseType string) *StructHandler {
-	ts.StructName.Name = name
+// SetStructNameConfig("结构名称","命名规则")
+// 不设置此项，默认生成的结构名类型为CamelCase写法
+func (ts *StructHandler) SetStructNameConfig(nameCaseType, structName string) *StructHandler {
+	ts.StructName.Name = structName
 	ts.StructName.NameCaseType = nameCaseType
 	ts.StructName.Prefix = ""
 	ts.StructName.Suffix = ""

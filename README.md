@@ -50,7 +50,7 @@ func Single() {
 		//保存到什么位置
 		SetSavePath(SavePath).
 		//单表可以指定生成的struct的名称和格式(单表生成时使用)
-		SetStructNameConfig(StructName, common.CamelCase).
+        SetStructNameConfig(common.CamelCase, StructName).
 		//ORM标签信息, SetStructOrmTag("gorm","是否生成type标签","是否生成PRIMARY KEY标签","是否生成NOT NULL标签")
 		SetStructOrmTag(common.GORM, true, true, true).
 		//扩展标签信息

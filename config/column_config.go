@@ -139,19 +139,19 @@ func (ts *StructHandler) SetColumns() {
 
 			//生成 type
 			if ts.StructColumn.TagType {
-				tag += fmt.Sprintf("type:%s;", col.ColumnType)
+				tag += fmt.Sprintf(" type:%s;", col.ColumnType)
 			}
 
 			//生成 PRIMARY KEY
 			if ts.StructColumn.Primary && col.ColumnKey == "PRI" {
-				tag += fmt.Sprintf("%s;", common.PRI)
+				tag += fmt.Sprintf(" %s;", common.PRI)
 			}
 
 			//生成 not null
 			if ts.StructColumn.IsNull && col.Nullable == "NO" {
 				//不能为null
 				//`gorm:"column:sn;type:BIGINT(19) UNSIGNED; PRIMARY_KEY; NOT NULL"`
-				tag += fmt.Sprintf("NOT NULL;")
+				tag += fmt.Sprintf(" NOT NULL;")
 			}
 
 			tag += "\""
@@ -210,6 +210,7 @@ func (ts *StructHandler) GenerateChangeChara(str string, Type string) string {
 	var text string
 	//不开启字段转为骆驼写法则仅仅将首字母大写
 	switch Type {
+
 	case common.CamelCase:
 		for _, p := range strings.Split(str, "_") {
 			// 考虑不规范字段定义,只保证不报错，不矫正字段 比如 ID_、NAME__AAA
@@ -218,8 +219,23 @@ func (ts *StructHandler) GenerateChangeChara(str string, Type string) string {
 			}
 			text += strings.ToUpper(p[0:1]) + p[1:]
 		}
+
 	case common.FirstUpper:
 		text += strings.ToUpper(str[0:1]) + strings.ToLower(str[1:])
+
+	case common.LowAfterCamelCase:
+		// 先全转小写
+		lower := strings.ToLower(str)
+
+		// 驼峰
+		for _, p := range strings.Split(lower, "_") {
+			// 考虑不规范字段定义,只保证不报错，不矫正字段 比如 ID_、NAME__AAA
+			if p == "" {
+				continue
+			}
+			text += strings.ToUpper(p[0:1]) + p[1:]
+		}
+
 	default:
 		for _, p := range strings.Split(str, "_") {
 			// 考虑不规范字段定义,只保证不报错，不矫正字段 比如 ID_、NAME__AAA
