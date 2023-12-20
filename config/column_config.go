@@ -212,12 +212,20 @@ func (ts *StructHandler) GenerateChangeChara(str string, Type string) string {
 	switch Type {
 	case common.CamelCase:
 		for _, p := range strings.Split(str, "_") {
+			// 考虑不规范字段定义,只保证不报错，不矫正字段 比如 ID_、NAME__AAA
+			if p == "" {
+				continue
+			}
 			text += strings.ToUpper(p[0:1]) + p[1:]
 		}
 	case common.FirstUpper:
 		text += strings.ToUpper(str[0:1]) + strings.ToLower(str[1:])
 	default:
 		for _, p := range strings.Split(str, "_") {
+			// 考虑不规范字段定义,只保证不报错，不矫正字段 比如 ID_、NAME__AAA
+			if p == "" {
+				continue
+			}
 			text += strings.ToUpper(p[0:1]) + p[1:]
 		}
 	}
