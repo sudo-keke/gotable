@@ -11,9 +11,33 @@
 
 🌱 使用方法： 复制以下代码片段即可
     
+### ⏩ go.mod（示例）
+```go
+
+module XXXX
+
+// 1.17+
+go 1.18
+
+require (
+	gotable v1.3.0
+)
+
+// 重命名为 gotable，建议使用最新版本
+replace gotable => github.com/sudo-keke/gotable v1.3.0
+
+
+```
+
 
 ### ⏩ 单表生成（示例）
 ```go
+// 引用 gotable，如果go.mod没重命名，则需要全路径
+import (
+	"gotable/common"
+	"gotable/config"
+)
+
 func Single() {
 	handler := config.NewTblToStructHandler()
 	handler.
